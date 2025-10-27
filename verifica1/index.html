@@ -13,7 +13,9 @@
       overflow: hidden;
     }
     .left {
-      width: 50%; /* meno spazio alla consegna, più al compilatore */
+      flex: 0 0 auto;     /* non cresce né si riduce automaticamente */
+      min-width: 300px;   /* larghezza minima per leggibilità */
+      max-width: 500px;   /* larghezza massima per non occupare troppo spazio */
       box-sizing: border-box;
       overflow-y: auto; /* scroll separato per il testo */
       border-right: 2px solid #ddd;
