@@ -125,7 +125,7 @@
   </li>
   <li><code>aggiornaMedia():</code>
     <ul>
-      <li>prende come input le variabili <code>numeroLibriLetti</code> e <code>mediaVoti</code> della struct</li>
+      <li>prende come input le variabili della struct singolarmente (quindi non passa la struct come input ma le sue variabili)</li>
       <li>chiama la funzione <code>verificaAttivita</code> e somma il suo output con la variabile <code>mediaVoti</code> della struct, poi divide la somma per 2 e salva il risultato in <code>mediaVoti</code></li>
       <li>se la variabile <code>numeroLibriLetti</code> è maggiore di 5, allora aggiungiamo 3 a <code>mediaVoti</code></li>
       <li>la funzione ritorna <code>VOTO_MAX</code> se <code>mediaVoti</code> è maggiore di <code>VOTO_MAX</code>, altrimenti ritorna <code>mediaVoti</code></li>
@@ -136,9 +136,10 @@
 I nomi delle variabili in input nella dichiarazione della funzione devono essere diversi (dove possibile) dai nomi delle variabili che nel main diamo come input alle funzioni.
 <p>Gli input devono essere passati by reference solo quando necessario/utile.</p>
 
-4. Nel main:
+4. Nel main devi visualizzare in output:
 <ul>
-  <li>devi visualizzare in output il risultato di <code>aggiornaMedia</code> dopo averlo trasformato in <code>int</code></li>
+  <li>il risultato di <code>aggiornaMedia</code> dopo averlo trasformato in <code>int</code></li>
+  <li>il numero di studenti attivi</li>
 </ul>
   </div>
   <div class="right">
