@@ -1,93 +1,145 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
   <title>Verifica C++</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
+    /* RESET/BASE */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
     body {
-      margin: 0;
-      font-family: monospace;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: #f4f4f4;
+      color: #111;
       display: flex;
       height: 100vh;
-      background: #f4f4f4;
       overflow: hidden;
+      font-size: 16px;
+      line-height: 1.45;
     }
+
+    /* LATO SINISTRO (testo leggibile) */
     .left {
-      flex: 0 0 auto;     /* non cresce né si riduce automaticamente */
-      min-width: 300px;   /* larghezza minima per leggibilità */
-      max-width: 600px;   /* larghezza massima per non occupare troppo spazio */
-      box-sizing: border-box;
-      overflow-y: auto; /* scroll separato per il testo */
-      border-right: 2px solid #ddd;
-      white-space: pre-wrap; /* mantiene la formattazione */
-      word-wrap: break-word;  /* forza il wrapping delle righe lunghe */
-      padding: 20px;
+      flex: 0 0 600px;    /* più largo inizialmente */
+      min-width: 350px;
+      max-width: 700px;
+      padding: 20px 24px;
+      border-right: 1px solid #e1e1e1;
+      background: #ffffff;
+      overflow-y: auto;
     }
+
+    /* PICCOLA TIPOGRAFIA PER IL TESTO */
+    .left h1 {
+      font-size: 18px;
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+    .left p {
+      margin: 0 0 12px 0;
+      color: #222;
+    }
+
+    /* DEFAULT UL/LI: rimuoviamo margini verticali pesanti del browser */
+    .left ul, .left ol {
+      margin: 0 0 12px 0;      /* spazio compatto sotto la lista */
+      padding-left: 1.25rem;   /* indentazione per il livello 1 */
+    }
+    .left li {
+      margin: 0 0 6px 0;       /* piccolo spazio tra le voci */
+      padding: 0;
+      line-height: 1.35;
+    }
+
+    /* SOTTOELENCHI: indentazione extra ma senza margini verticali aggiuntivi */
+    .left ul ul,
+    .left ol ol,
+    .left ul ol,
+    .left ol ul {
+      margin: 0;               /* annulla margini verticali aggiuntivi */
+      padding-left: 1rem;      /* indentazione aggiuntiva per il livello 2+ */
+    }
+    .left ul ul li {
+      margin: 0 0 4px 0;       /* ancora meno spazio per i sottoelementi */
+    }
+
+    /* stili opzionali per evidenziare i punti secondari */
+    .left li p { margin: 0; }  /* paragrafo dentro li non aggiunge margini */
+    .muted { color: #666; font-size: 0.95rem; }
+
+    /* LATO DESTRO (iframe ecc.) */
     .right {
-      flex: 1; /* compilatore occupa il resto dello schermo */
+      flex: 1;
       display: flex;
+      align-items: stretch;
       justify-content: center;
-      align-items: center;
-      border-left: 2px solid #ddd;
+      border-left: 1px solid #e1e1e1;
       background: #fafafa;
     }
-    iframe {
+    .right iframe {
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    /* Responsive: su schermi piccoli la colonna sinistra diventa scrollabile in alto */
+    @media (max-width: 720px) {
+      body { flex-direction: column; height: auto; }
+      .left { flex: none; width: 100%; max-height: 50vh; overflow-y: auto; }
+      .right { height: 50vh; }
     }
   </style>
 </head>
 <body>
   <div class="left">
-<code>
-ESERCIZIO
-
-Scrivi un programma in C++ che rispetti le seguenti specifiche:
-
-1. Crea una struct chiamata Studente che contenga tre variabili:
-    - int numeroLibriLetti
-    - double mediaVoti
-    - bool partecipazioneAttiva
+<p>Scrivi un programma in C++ che rispetti le seguenti specifiche.</p>
+1. Crea una struct chiamata <code>Studente</code> che contenga tre variabili:
+<ul>
+  <li><code>int numeroLibriLetti</code></li>
+  <li><code>double mediaVoti (sarà un numero compreso tra 0 e 10)</code></li>
+  <li><code>bool partecipazioneAttiva</code></li>
+</ul>
 
 2. Definisci due variabili globali:
-    - const double VOTO_MAX = 10.0;
-    - int studentiAttivi = 0; NON costante, può essere modificata dalle funzioni
+<ul>
+  <li><code>const double VOTO_MAX = 10.0;</code></li>
+  <li><code>int studentiAttivi = 0;</code></li>
+</ul>
 
 3. Crea le seguenti funzioni:
+<ul>
+  <li><code>inizializza():</code>
+    <ul>
+      <li>si occupa di inizializzare le variabili della struct <u>modificandole</u> con valori a tua scelta coerenti con il tipo delle variabili</li>
+      <li>incrementa la variabile <code>studentiAttivi</code> se <code>partecipazioneAttiva</code> è <code>true</code></li>
+    </ul>
+  </li>
+  <li><code>verificaAttivita():</code>
+    <ul>
+      <li>prende la variabile <code>partecipazioneAttiva</code> della struct come input</li>
+      <li>ritorna 9.0 se <code>true</code>, 4.5 se <code>false</code></li>
+    </ul>
+  </li>
+  <li><code>aggiornaMedia():</code>
+    <ul>
+      <li>prende come input le variabili <code>numeroLibriLetti</code> e <code>mediaVoti</code> della struct</li>
+      <li>chiama la funzione <code>verificaAttivita</code> e somma il suo output con la variabile <code>mediaVoti</code> della struct, poi divide la somma per 2 e salva il risultato in <code>mediaVoti</code></li>
+      <li>se la variabile <code>numeroLibriLetti</code> è maggiore di 5, allora aggiungiamo 3 a <code>mediaVoti</code></li>
+      <li>la funzione ritorna <code>VOTO_MAX</code> se <code>mediaVoti</code> è maggiore di <code>VOTO_MAX</code>, altrimenti ritorna <code>mediaVoti</code></li>
+    </ul>
+  </li>
+</ul>
 
-    inizializza()
-      - inizializza tutte le variabili della struct con valori a tua scelta
-        coerenti con il tipo delle variabili
-      - incrementa la variabile globale studentiAttivi se il bool è true
-
-    f2:
-      - riceve la variabile bool della struct
-        // ritorna 99 se flag è true, 100 se flag è false
-        // NOTA: il parametro si deve chiamare "flag", non "bool" o "valore"
-
-    void f3(double&amp; numeroLocale);
-        // riceve la variabile double della struct (by reference)
-        // divide il numero per 3
-        // usa static_cast&lt;double&gt; se serve per evitare divisione intera
-        // usa anche la costante globale PI in un’operazione a tua scelta
-        // (ad esempio: numeroLocale = numeroLocale / 3 + PI / 10)
+I nomi delle variabili in input nella dichiarazione della funzione devono essere diversi (dove possibile) dai nomi delle variabili che nel main diamo come input alle funzioni.
+<p>Gli input devono essere passati by reference solo quando necessario/utile.</p>
 
 4. Nel main:
-    - dichiara una variabile di tipo Dati chiamata d1
-    - chiama f1(d1) per inizializzarla
-    - chiama f3(d1.&lt;la_tua_variabile_double&gt;) per modificarne il valore
-    - chiama f2(d1.&lt;la_tua_variabile_bool&gt;) e stampa il valore restituito
-    - stampa infine tutte le variabili della struct e anche la variabile globale contatore
-
-5. Regole aggiuntive:
-    - usa nomi diversi per le variabili locali, di struct e di parametri
-      per mostrare che hai capito che non sono la stessa cosa
-    - usa almeno una costante (const)
-    - usa almeno un passaggio by reference
-    - mostra in output la differenza tra modificare una variabile globale
-      e modificare una variabile passata per riferimento
-</code>
+<ul>
+  <li>devi visualizzare in output il risultato di <code>aggiornaMedia</code> dopo averlo trasformato in <code>int</code></li>
+</ul>
   </div>
   <div class="right">
     <iframe src="https://learn.wetambara.com/"></iframe>
