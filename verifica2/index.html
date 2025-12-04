@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Verifica C++</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    /* RESET/BASE */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: #f4f4f4;
+      color: #111;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    /* LATO SINISTRO (testo leggibile) */
+    .left {
+      flex: 0 0 600px;    /* più largo inizialmente */
+      min-width: 350px;
+      max-width: 700px;
+      padding: 20px 24px;
+      border-right: 1px solid #e1e1e1;
+      background: #ffffff;
+      overflow-y: auto;
+      height: 100%;       /* o 100vh */
+      box-sizing: border-box;
+      padding-bottom: 20px;  /* evita che l’ultima riga tocchi il bordo */
+    }
+
+    /* PICCOLA TIPOGRAFIA PER IL TESTO */
+    .left h1 {
+      font-size: 18px;
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+    .left p {
+      margin: 0 0 12px 0;
+      color: #222;
+    }
+
+    /* DEFAULT UL/LI: rimuoviamo margini verticali pesanti del browser */
+    .left ul, .left ol {
+      margin: 0 0 12px 0;      /* spazio compatto sotto la lista */
+      padding-left: 1.25rem;   /* indentazione per il livello 1 */
+    }
+    .left li {
+      margin: 0 0 6px 0;       /* piccolo spazio tra le voci */
+      padding: 0;
+      line-height: 1.35;
+    }
+
+    /* SOTTOELENCHI: indentazione extra ma senza margini verticali aggiuntivi */
+    .left ul ul,
+    .left ol ol,
+    .left ul ol,
+    .left ol ul {
+      margin: 0;               /* annulla margini verticali aggiuntivi */
+      padding-left: 1rem;      /* indentazione aggiuntiva per il livello 2+ */
+    }
+    .left ul ul li {
+      margin: 0 0 4px 0;       /* ancora meno spazio per i sottoelementi */
+    }
+
+    /* stili opzionali per evidenziare i punti secondari */
+    .left li p { margin: 0; }  /* paragrafo dentro li non aggiunge margini */
+    .muted { color: #666; font-size: 0.95rem; }
+
+    /* LATO DESTRO (iframe ecc.) */
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      border-left: 1px solid #e1e1e1;
+      background: #fafafa;
+    }
+    .right iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Responsive: su schermi piccoli la colonna sinistra diventa scrollabile in alto */
+    @media (max-width: 720px) {
+      body { flex-direction: column; height: auto; }
+      .left { flex: none; width: 100%; max-height: 50vh; overflow-y: auto; }
+      .right { height: 50vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+<p>Scrivi un programma in C++ che rispetti le seguenti specifiche.</p>
+1. Crea una struct chiamata <code>Sensore</code> che contenga tre variabili:
+<ul>
+  <li><code>double temperatura</code></li>
+  <li><code>int segnalazioni</code></li>
+  <li><code>bool guasto</code></li>
+</ul>
+
+2. Definisci due variabili globali:
+<ul>
+  <li><code>int totaleSegnalazioni = 0;</code></li>
+  <li><code>const double LIMITE = 75.0;</code></li>
+</ul>
+
+3. Crea le seguenti funzioni:
+<ul>
+  <li><code>setup():</code>
+    <ul>
+      <li>si occupa di inizializzare le variabili della struct <u>modificandole</u> con valori a tua scelta coerenti con il tipo delle variabili</li>
+      <li>aggiunge <code>segnalazioni</code> a <code>totaleSegnalazioni</code> se il sensore non è guasto</li>
+    </ul>
+  </li>
+  <li><code>statoGuasto():</code>
+    <ul>
+      <li>prende la variabile <code>guasto</code> della struct come input</li>
+      <li>ritorna 1 se il sensore è guasto, 0 se non è guasto</li>
+    </ul>
+  </li>
+  <li><code>calcolaTemperatura():</code>
+    <ul>
+      <li>prende come input le variabili della struct singolarmente (quindi non passa la struct come input ma le sue variabili)</li>
+      <li>chiama la funzione <code>statoGuasto</code> e somma il suo output con la variabile <code>temperatura</code> della struct</li>
+      <li>se le segnalazioni sono maggiori di 3, allora aumentiamo <code>temperatura</code> di 0.5</li>
+      <li>la funzione ritorna <code>LIMITE</code> se <code>temperatura</code> è maggiore di <code>LIMITE</code>, altrimenti ritorna <code>temperatura</code></li>
+    </ul>
+  </li>
+</ul>
+
+I nomi delle variabili in input nella dichiarazione della funzione devono essere diversi (dove possibile) dai nomi delle variabili che nel main diamo come input alle funzioni.
+<p>Gli input devono essere passati by reference solo quando necessario/utile.</p>
+
+4. Nel main devi visualizzare in output:
+<ul>
+  <li>il risultato di <code>calcolaTemperatura</code> dopo averlo trasformato in <code>int</code></li>
+  <li>il valore della variabile <code>totaleSegnalazioni</code></li>
+</ul>
+  </div>
+  <div class="right">
+    <iframe src="https://learn.wetambara.com/"></iframe>
+  </div>
+</body>
+</html>
