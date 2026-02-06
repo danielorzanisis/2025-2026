@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Verifica C++</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    /* RESET/BASE */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: #f4f4f4;
+      color: #111;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    /* LATO SINISTRO (testo leggibile) */
+    .left {
+      flex: 0 0 600px;    /* più largo inizialmente */
+      min-width: 350px;
+      max-width: 700px;
+      padding: 20px 24px;
+      border-right: 1px solid #e1e1e1;
+      background: #ffffff;
+      overflow-y: auto;
+      height: 100%;       /* o 100vh */
+      box-sizing: border-box;
+      padding-bottom: 20px;  /* evita che l’ultima riga tocchi il bordo */
+    }
+
+    /* PICCOLA TIPOGRAFIA PER IL TESTO */
+    .left h1 {
+      font-size: 18px;
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+    .left p {
+      margin: 0 0 12px 0;
+      color: #222;
+    }
+
+    /* DEFAULT UL/LI: rimuoviamo margini verticali pesanti del browser */
+    .left ul, .left ol {
+      margin: 0 0 12px 0;      /* spazio compatto sotto la lista */
+      padding-left: 1.25rem;   /* indentazione per il livello 1 */
+    }
+    .left li {
+      margin: 0 0 6px 0;       /* piccolo spazio tra le voci */
+      padding: 0;
+      line-height: 1.35;
+    }
+
+    /* SOTTOELENCHI: indentazione extra ma senza margini verticali aggiuntivi */
+    .left ul ul,
+    .left ol ol,
+    .left ul ol,
+    .left ol ul {
+      margin: 0;               /* annulla margini verticali aggiuntivi */
+      padding-left: 1rem;      /* indentazione aggiuntiva per il livello 2+ */
+    }
+    .left ul ul li {
+      margin: 0 0 4px 0;       /* ancora meno spazio per i sottoelementi */
+    }
+
+    /* stili opzionali per evidenziare i punti secondari */
+    .left li p { margin: 0; }  /* paragrafo dentro li non aggiunge margini */
+    .muted { color: #666; font-size: 0.95rem; }
+
+    /* LATO DESTRO (iframe ecc.) */
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      border-left: 1px solid #e1e1e1;
+      background: #fafafa;
+    }
+    .right iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Responsive: su schermi piccoli la colonna sinistra diventa scrollabile in alto */
+    @media (max-width: 720px) {
+      body { flex-direction: column; height: auto; }
+      .left { flex: none; width: 100%; max-height: 50vh; overflow-y: auto; }
+      .right { height: 50vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+<h1>Conteggio dei percorsi in una griglia</h1>
+Considera un piano cartesiano.
+<ul>
+  <li>Il punto (0, 0) si trova in basso a sinistra.</li>
+  <li>Il punto (x, y) si trova in alto a destra, con x ≥ 0 e y ≥ 0.</li>
+</ul>
+
+Partendo dal punto (0,0), è possibile muoversi solo:
+<ul>
+  <li>di una unità verso destra (incrementando x);</li>
+  <li>di una unità verso l’alto (incrementando y).</li>
+</ul>
+
+Consegna:
+<ul>
+  <li>scrivi una funzione ricorsiva <code>conta_percorsi(x,y)</code> che restituisca il numero di percorsi diversi per arrivare dal punto (0,0) al punto (x, y) rispettando le regole di movimento;</li>
+  <li>calcola il numero di chiamate ricorsive per una griglia 4x4 motivando la tua risposta.</li>
+</ul>
+
+Per controllare se il tuo risultato è corretto, puoi utilizzare questo codice:
+<BR><BR>
+<code>
+import math
+<BR><BR>
+def conta_percorsi_combinatorio(x, y):
+<BR>
+&nbsp;&nbsp;return math.comb(x + y, x)
+<BR><BR>
+print(conta_percorsi_combinatorio(2, 2))  # Output: 6
+<BR>
+print(conta_percorsi_combinatorio(3, 5))  # Output: 56
+</code>
+<BR><BR>
+<b>Extra:</b>
+<BR>
+modifica la funzione <code>conta_percorsi(x,y)</code> in <code>conta_percorsi(x_start,y_start,x,y)</code> per contare il numero di percorsi 
+dal punto (x_start,y_start) al punto (x,y).
+<BR><BR>
+<b>Facoltativo se avanza tempo:</b>
+<BR>
+scrivi una versione non ricorsiva della funzione <code>conta_percorsi(x,y)</code> per risolvere il problema.
+  </div>
+  <div class="right">
+    <iframe src="https://learn.wetambara.com/"></iframe>
+  </div>
+</body>
+</html>
