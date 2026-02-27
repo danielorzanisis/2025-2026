@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Verifica C++</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    /* RESET/BASE */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                   Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: #f4f4f4;
+      color: #111;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    /* LATO SINISTRO (testo leggibile) */
+    .left {
+      flex: 0 0 600px;    /* più largo inizialmente */
+      min-width: 350px;
+      max-width: 700px;
+      padding: 20px 24px;
+      border-right: 1px solid #e1e1e1;
+      background: #ffffff;
+      overflow-y: auto;
+      height: 100%;       /* o 100vh */
+      box-sizing: border-box;
+      padding-bottom: 20px;  /* evita che l’ultima riga tocchi il bordo */
+    }
+
+    /* PICCOLA TIPOGRAFIA PER IL TESTO */
+    .left h1 {
+      font-size: 18px;
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+    .left p {
+      margin: 0 0 12px 0;
+      color: #222;
+    }
+
+    /* DEFAULT UL/LI: rimuoviamo margini verticali pesanti del browser */
+    .left ul, .left ol {
+      margin: 0 0 12px 0;      /* spazio compatto sotto la lista */
+      padding-left: 1.25rem;   /* indentazione per il livello 1 */
+    }
+    .left li {
+      margin: 0 0 6px 0;       /* piccolo spazio tra le voci */
+      padding: 0;
+      line-height: 1.35;
+    }
+
+    /* SOTTOELENCHI: indentazione extra ma senza margini verticali aggiuntivi */
+    .left ul ul,
+    .left ol ol,
+    .left ul ol,
+    .left ol ul {
+      margin: 0;               /* annulla margini verticali aggiuntivi */
+      padding-left: 1rem;      /* indentazione aggiuntiva per il livello 2+ */
+    }
+    .left ul ul li {
+      margin: 0 0 4px 0;       /* ancora meno spazio per i sottoelementi */
+    }
+
+    /* stili opzionali per evidenziare i punti secondari */
+    .left li p { margin: 0; }  /* paragrafo dentro li non aggiunge margini */
+    .muted { color: #666; font-size: 0.95rem; }
+
+    /* LATO DESTRO (iframe ecc.) */
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      border-left: 1px solid #e1e1e1;
+      background: #fafafa;
+    }
+    .right iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Responsive: su schermi piccoli la colonna sinistra diventa scrollabile in alto */
+    @media (max-width: 720px) {
+      body { flex-direction: column; height: auto; }
+      .left { flex: none; width: 100%; max-height: 50vh; overflow-y: auto; }
+      .right { height: 50vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+<h1>Somma delle cifre di un numero</h1>
+Consegna:
+<ul>
+  <li>
+    scrivi una funzione ricorsiva che, dato un numero intero, restituisca la somma delle sue cifre;
+  </li>
+  <li>
+    calcola il numero di chiamate ricorsive che vengono effettuate per un numero di 10 cifre.
+  </li>
+</ul>
+Esempio:<BR>
+somma_cifre(382) -> 13<BR><BR>
+<h1>Conteggio delle vocali in una stringa</h1>
+Consegna:
+<ul>
+  <li>
+    scrivi una funzione ricorsiva che, data una stringa, restituisca il numero di vocali che contiene;
+  </li>
+  <li>
+    calcola il numero di chiamate ricorsive che vengono effettuate per una stringa di 20 caratteri.
+  </li>
+</ul>
+Esempio:<BR>
+conta_vocali("ciao") -> 3<BR><BR>
+  </div>
+  <div class="right">
+    <iframe src="https://www.online-python.com/"></iframe>
+  </div>
+</body>
+</html>
