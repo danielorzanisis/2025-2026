@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <title>Verifica C++</title>
+  <title>Verifica matrici</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
     /* RESET/BASE */
@@ -98,39 +98,58 @@
 </head>
 <body>
   <div class="left">
-<h1>Compressione delle colonne</h1>
-Data una matrice composta da 0 e 1, costruire una nuova matrice in cui gli 1 vengono “spostati verso il basso” all'interno della stessa colonna.
-<br>
-Per ogni colonna:
+<h1>Massimi della matrice</h1>
+Crea una funzione che riceve una matrice di numeri interi e costruisce una nuova matrice della stessa dimensione.
+<BR>
+Nella nuova matrice:
 <ul>
   <li>
-    conta quanti 1 sono presenti;
+    inserisci 1 nelle posizioni in cui compare il valore massimo della matrice originale;
   </li>
   <li>
-    costruisci la colonna nella nuova matrice mettendo gli 1 in basso e 0 nelle celle rimanenti in alto.
+    inserisci 0 in tutte le altre posizioni.
   </li>
 </ul>
+
 Esempio:<BR>
 <code>
-    grid_input =<br>
-        [[1, 0, 1],<br>
-        [0, 1, 1],<br>
-        [1, 0, 0]]<br><br>
+    matrice_input =<br>
+        [[5, 2, 8],<br>
+        [1, 8, 3],<br>
+        [4, 6, 7]]<br><br>
 
-    grid_output =<br>
-        [[0, 0, 0],<br>
-        [1, 0, 1],<br>
-        [1, 1, 1]]
+    matrice_output =<br>
+        [[0, 0, 1],<br>
+        [0, 1, 0],<br>
+        [0, 0, 0]]
 </code>
 <br><br>
-Dopo aver creato la funzione, testala su una matrice più grande:
-<br><br>
+<h1>Cornice della matrice</h1>
+Crea una funzione che riceve una matrice di numeri interi e costruisce una nuova matrice della stessa dimensione.
+<BR>
+Nella nuova matrice:
+<ul>
+  <li>
+    gli elementi sul bordo (prima riga, ultima riga, prima colonna e ultima colonna) devono mantenere il valore originale;
+  </li>
+  <li>
+    tutti gli altri elementi devono essere sostituiti con 0.
+  </li>
+</ul>
+
+Esempio:<BR>
 <code>
-    import random<br><br>
-    grid = [[random.randint(0, 1) for _ in range(20)] for _ in range(15)]<br>
-    # visualizziamo la matrice creata<br>
-    for r in grid:<br>
-    &nbsp;&nbsp;&nbsp;print(r)
+    matrice_input =<br>
+        [[2, 7, 5, 1],<br>
+        [10, 1, 3, 4],<br>
+        [4, 8, 3, 2],<br>
+        [0, 2, 7, 9]]<br><br>
+
+    matrice_output =<br>
+        [[2, 7, 5, 1],<br>
+        [10, 0, 0, 4],<br>
+        [4, 0, 0, 2],<br>
+        [0, 2, 7, 9]]
 </code>
 
   </div>
